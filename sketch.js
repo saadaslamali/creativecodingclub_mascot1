@@ -1,3 +1,6 @@
+// divides screen horizontally n times, detects which section your nose is in, sends that as a string to arduino
+//uses ml5 / p5phone by nick puckett (https://github.com/npuckett/p5-phone/tree/6c8828d98528f9ed47a89827ccfa7c2d443e2b1c/examples/ml5/PHONE_FaceMesh_two_points)
+//webserial adapted from aaryan pashine (https://github.com/caizoryan/hydra-interface)
 /*
 ML5 FaceMesh Detection - Multiple Points with Velocity (Phone Adapted)
 
@@ -153,7 +156,7 @@ function setup() {
    div_width = windowWidth/n;
   
   // Wait for camera to initialize, then create model and start detection
-  cam.onReady(() => {
+  cam.onReady(() => {a
     // Configure ML5 FaceMesh AFTER camera is ready
     let options = {
       maxFaces: 1,           // Only detect 1 face
@@ -463,9 +466,6 @@ function mousePressed() {
   showVideo = !showVideo;
 }
 
-
-
-
 function division_check(pointx) {
     for (let i = 0; i < n; i++){
         let section_width = ((i+1)*div_width)-(i*div_width);
@@ -484,14 +484,5 @@ function division_check(pointx) {
 };
 
 
-
-
-function send_position(index) {
-
-
-    
-    // serial.writeLine(index);
-  
-}
 
 
