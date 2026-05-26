@@ -1,4 +1,3 @@
-
 /**************************************************************************
  This is an example for our Monochrome OLEDs based on SSD1306 drivers
 
@@ -664,7 +663,7 @@ const unsigned char* epd_bitmap_allArray[9] = {
 };
 
 
-int i = 0;
+int i = 5;
 
 void setup() {
   Serial.begin(9600);
@@ -692,15 +691,28 @@ void setup() {
 
 int x;
 String str;
+long randm;
 
 void loop() {
     if(Serial.available() > 0)
     {
-        // str = Serial.readStringUntil('\n');
-        i = Serial.parseInt();
-    }
+        str = Serial.readStringUntil('\n');
 
+				// if (Serial){
+				if (str != NULL){
+        i = str.toInt();
+				}
+				// }
+    }
+		randm = random(15);
+
+		if(randm <1.0){
+						testdrawbitmap(8);
+
+		}
+		else {
 			testdrawbitmap(i);
+		}
 			// delay(200);
 }
 
